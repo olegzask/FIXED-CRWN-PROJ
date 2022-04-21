@@ -1,0 +1,28 @@
+import React from "react";
+import {
+  signInWithGooglePopup,
+  createUserProfileDocument,
+  createuserDocumentFromAuth,
+} from "../../utils/firebase/firebase.utils";
+
+import { Button } from "../button/button.component";
+
+export const SignIn = () => {
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGooglePopup();
+    const userDocRef = await createuserDocumentFromAuth(user);
+  };
+
+  return (
+    <div>
+      <Button
+        props={{
+          type: "submit",
+          buttonType: "google-sign-in",
+          name: "SIGN IN WITH GOOGLE",
+          onClickFunc: logGoogleUser,
+        }}
+      />
+    </div>
+  );
+};

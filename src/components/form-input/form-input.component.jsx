@@ -3,10 +3,21 @@ import "..//form-input/form-input.scss";
 import { Button } from "../button/button.component";
 
 export const FormInput = ({ props }) => {
-  const { handleChange, handleSubmit, inputFields, valueCoder } = props;
+  const {
+    handleChange,
+    handleSubmit,
+    inputFields,
+    valueCoder,
+    handleSignIn,
+    buttonName,
+  } = props;
+  const handlerDecider = () => {
+    if (handleSubmit) return handleSubmit;
+    if (handleChange) return handleSignIn;
+  };
   return (
     <div className="group">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handlerDecider()}>
         {inputFields.map((input) => {
           return (
             <div key={input.key}>
@@ -23,7 +34,7 @@ export const FormInput = ({ props }) => {
             </div>
           );
         })}
-        <Button props={{ name: "Submit", type: "submit", buttonType: "" }} />
+        <Button props={{ name: buttonName, type: "submit", buttonType: "" }} />
       </form>
     </div>
   );

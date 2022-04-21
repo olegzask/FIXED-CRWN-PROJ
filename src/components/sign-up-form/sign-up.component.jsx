@@ -5,7 +5,7 @@ import {
   createuserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import { FormInput } from "../form-input/form-input.component";
-import "../sign-up-form/sign-up-form.styles.scss";
+import "./sign-up-form.styles.scss";
 
 const defaultFormFields = {
   displayName: "",
@@ -55,7 +55,13 @@ const SignUpForm = ({ inputFields }) => {
       <h2>Don't have an account?</h2>
       <span>Sign Up with Email & Password</span>
       <FormInput
-        props={{ handleChange, handleSubmit, valueCoder, inputFields }}
+        props={{
+          handleChange,
+          handleSubmit,
+          valueCoder,
+          inputFields,
+          buttonName: "SUBMIT",
+        }}
       />
     </div>
   );
