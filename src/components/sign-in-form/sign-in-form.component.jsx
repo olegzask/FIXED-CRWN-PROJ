@@ -1,5 +1,5 @@
-import { async } from "@firebase/util";
 import React, { useState } from "react";
+import { async } from "@firebase/util";
 import { FormInput } from "../form-input/form-input.component";
 import { GoogleAuthProvider } from "firebase/auth";
 import {
@@ -22,8 +22,7 @@ export const SignInForm = ({ inputFields }) => {
   const handleSignIn = async (event) => {
     event.preventDefault();
     try {
-      const response = await signInUserWithEmailAndPassword(email, password);
-      console.log(response);
+      await signInUserWithEmailAndPassword(email, password);
       setFormFields(defaultFormFields);
     } catch (error) {
       if (error.code === "auth/wrong-password") alert("Wrong Password");

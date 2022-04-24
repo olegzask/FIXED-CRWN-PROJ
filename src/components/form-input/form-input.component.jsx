@@ -29,7 +29,6 @@ export const FormInput = ({ props }) => {
                 type={input.type}
                 name={input.name}
                 value={valueCoder(input)}
-                onChange={handleChange}
               />
             </div>
           );
