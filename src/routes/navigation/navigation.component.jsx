@@ -10,7 +10,7 @@ import CartDropDown from "../../components/cart-dropdown/cart-dropdown.component
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-  const { dropDown } = useContext(cartDropDownContext);
+  const { dropDown, cartItems } = useContext(cartDropDownContext);
 
   return (
     <Fragment>
@@ -34,7 +34,7 @@ const Navigation = () => {
 
           <CartIcon />
         </div>
-        {dropDown ? <CartDropDown /> : null}
+        {dropDown && cartItems.length > 0 ? <CartDropDown /> : null}
       </div>
       <Outlet />
     </Fragment>
