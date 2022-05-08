@@ -11,7 +11,7 @@ const CheckOut = () => {
 
   const gst = +((cartTotal / 100) * 5).toFixed(2);
   const pst = +((cartTotal / 100) * 6).toFixed(2);
-  const grandTotal = cartTotal + gst + pst;
+  const grandTotal = +(cartTotal + gst + pst).toFixed(2);
 
   const proceedPayment = () => {
     console.log("Going to Payment Page");
@@ -34,8 +34,8 @@ const CheckOut = () => {
   const decreaseItem = (event) => {
     const id = +event.target.value;
     const [product] = cartItems.filter((item) => item.id === id);
-    if (product.quantity === 1) return;
-    decreaceItemCount(product);
+    if (product.quantity < 2) delItem(product);
+    else decreaceItemCount(product);
   };
 
   return (
@@ -65,8 +65,8 @@ const CheckOut = () => {
                 </button>
               </div>
 
-              <span className="item-price">{item.price}</span>
-              <span className="item-total-price">{item.totalPrice}</span>
+              <span className="item-price">$ {item.price}</span>
+              <span className="item-total-price">$ {item.totalPrice}</span>
               <button
                 value={item.id}
                 onClick={deleteItem}

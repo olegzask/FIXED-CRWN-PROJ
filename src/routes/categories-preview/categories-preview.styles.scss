@@ -1,0 +1,11 @@
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 0px;
+  row-gap: 20px;
+  width: 100%;
+}
+
+.product-link-name {
+  font-size: xx-large;
+}
